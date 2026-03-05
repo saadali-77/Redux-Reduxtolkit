@@ -1,7 +1,7 @@
 const redux = require('redux')
 const createStore = redux.createStore
 //const combinereducer= redux.combineReducers
-const {produce}= require('immer')
+//const {produce}= require('immer')
 console.log('hello saad')
 
 const CAKE_ORDER = 'CAKE_ORDER'
@@ -13,12 +13,21 @@ function restockCake(quantity=1) {
     payload: quantity
   }
 }
-inside nested Object;
-return produce (state,(draft)=>{
- draft.street.address= action.payload
-})
-
-
+// inside nested Object;
+// return produce (state,(draft)=>{
+//  draft.street.address= action.payload
+// })
+import { applyMiddleware, createStore } from 'redux';
+ 
+// Logger with default options
+import logger from 'redux-logger'
+const store = createStore(
+  reducer,
+  applyMiddleware(logger)
+)
+ 
+// Note passing middleware as the third argument requires redux@>=3.1.0
+//it will log in the console
 
 function orderCake() {
   return {
