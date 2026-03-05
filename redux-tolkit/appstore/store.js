@@ -5,7 +5,10 @@ const logger= reduxlogger.createLogger()
 const store = configureStore({
   reducer: {
     cake: cakeReducer
-  }
+  },
+  middleware:(getdeafultmiddle)=> getdeafultmiddle().concat(logger)
+
+
 })
 
 module.exports = store
