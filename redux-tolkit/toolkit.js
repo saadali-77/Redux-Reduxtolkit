@@ -1,0 +1,8 @@
+ const store= require('./appstore/store')
+ const{ cakeActions}= require('./appstore/features/cakeSlice')
+ console.log('initial state  ',store.getState())
+ const unsub= store.subscribe(()=>console.log('upadate state',store.getState()))
+ store.dispatch(cakeActions.order())
+ store.dispatch(cakeActions.order())
+ store.dispatch(cakeActions.order())
+ store.dispatch(cakeActions.restock(5))
