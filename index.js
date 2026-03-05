@@ -1,6 +1,6 @@
 const redux = require('redux')
 const createStore = redux.createStore
-
+const combinereducer= redux.combineReducers
 console.log('hello saad')
 
 const CAKE_ORDER = 'CAKE_ORDER'
@@ -47,7 +47,12 @@ const reducer = (state = initialState, action) => {
       return state
   }
 }
+const rootReducer=combinereducer({
+    cake:cakeReducer,
+    icecream:IcecreamReducer
+})
 
+const Dummystore= createStore(rootReducer)
 const store = createStore(reducer)
 
 console.log('Initial State:', store.getState())
