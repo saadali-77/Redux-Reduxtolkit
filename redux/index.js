@@ -17,17 +17,6 @@ function restockCake(quantity=1) {
 // return produce (state,(draft)=>{
 //  draft.street.address= action.payload
 // })
-import { applyMiddleware, createStore } from 'redux';
- 
-// Logger with default options
-import logger from 'redux-logger'
-const store = createStore(
-  reducer,
-  applyMiddleware(logger)
-)
- 
-// Note passing middleware as the third argument requires redux@>=3.1.0
-//it will log in the console
 
 function orderCake() {
   return {
