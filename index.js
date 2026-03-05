@@ -4,6 +4,17 @@ const createStore = redux.createStore
 console.log('hello saad')
 
 const CAKE_ORDER = 'CAKE_ORDER'
+const restok_cake= 'restok_cake'
+
+function restockCake(quantity=1) {
+  return {
+    type: restok_cake,
+    payload: quantity
+  }
+}
+
+
+
 
 function orderCake() {
   return {
@@ -16,13 +27,22 @@ const initialState = {
   numberOfCake: 10
 }
 
+
+
+
+
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case CAKE_ORDER:
       return {
-        numberOfCake: state.numberOfCake - action.quantity
+        numberOfCake: state.numberOfCake - 1,
       }
-
+   case restok_cake:
+    return{
+        ...state,
+        restok_cake:state.numberOfCake + action.payload
+    }
     default:
       return state
   }
@@ -36,5 +56,7 @@ store.dispatch(orderCake())
 store.dispatch(orderCake())
 
 console.log('Updated State:', store.getState())
-unsub()
-store.dispatch(orderCake())
+
+store.dispatch(restockCake(2))
+// unsub()
+// store.dispatch(orderCake())
